@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Batalha dos Inscritos - O Jogo Oficial</title>
+    <style>
+        /* ESTILO GERAL (DARK MODE) */
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #121212;
+            color: #ffffff;
+            text-align: center;
+        }
+
+        /* CABEÇALHO */
+        header {
+            background: linear-gradient(135deg, #000000, #1a1a1a);
+            padding: 50px 20px;
+            border-bottom: 4px solid #D32F2F;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin: 0;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 0 0 10px rgba(255,255,255,0.2);
+        }
+
+        h2 {
+            color: #FF5252;
+            font-weight: 300;
+            margin-top: 10px;
+        }
+
+        /* ÁREA DE DOWNLOAD */
+        .hero {
+            padding: 60px 20px;
+            background-image: radial-gradient(circle at center, #1e1e1e 0%, #121212 70%);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #ccc;
+            max-width: 600px;
+            margin: 0 auto 30px auto;
+        }
+
+        .download-btn {
+            background: linear-gradient(90deg, #D32F2F, #B71C1C);
+            color: white;
+            padding: 20px 50px;
+            font-size: 1.5rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            box-shadow: 0 0 25px rgba(211, 47, 47, 0.4);
+            transition: all 0.3s ease;
+            display: inline-block;
+            border: 2px solid rgba(255,255,255,0.1);
+        }
+
+        .download-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 40px rgba(211, 47, 47, 0.6);
+            border-color: #fff;
+        }
+
+        /* CARACTERÍSTICAS (GRID) */
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            padding: 60px 20px;
+            background-color: #0d0d0d;
+        }
+
+        .card {
+            background-color: #1E1E1E;
+            padding: 30px;
+            border-radius: 20px;
+            width: 350px;
+            border: 1px solid #333;
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            border-color: #555;
+        }
+
+        .card h3 { 
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+        
+        .card.battle h3 { color: #FF5252; }
+        .card.futebol h3 { color: #69F0AE; }
+
+        .card p {
+            color: #aaa;
+            line-height: 1.6;
+        }
+
+        /* COMO USAR */
+        .tutorial {
+            margin: 60px auto;
+            max-width: 700px;
+            padding: 30px;
+            background-color: #1a1a1a;
+            border-radius: 15px;
+            border-left: 5px solid #FFD700;
+            text-align: left;
+        }
+
+        .tutorial h3 { color: #FFD700; margin-top: 0; }
+        .tutorial li { margin-bottom: 10px; color: #ddd; }
+
+        /* RODAPÉ */
+        footer {
+            padding: 30px;
+            font-size: 0.9rem;
+            color: #555;
+            background-color: #000;
+            border-top: 1px solid #222;
+        }
+
+        /* ESPAÇO PARA ANÚNCIO (DISCRETO) */
+        .ad-space {
+            width: 100%;
+            max-width: 728px;
+            height: 90px;
+            background-color: #1a1a1a;
+            margin: 30px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #444;
+            border: 1px dashed #333;
+            font-size: 0.8rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Batalha dos Inscritos</h1>
+        <h2>A Ferramenta Definitiva para Streamers</h2>
+    </header>
+
+    <div class="ad-space">Publicidade</div>
+
+    <div class="hero">
+        <p>Crie o caos na sua live! Coloque o nome dos seus seguidores e deixe a física decidir o vencedor.</p>
+        
+        <a href="#" class="download-btn">BAIXAR APK AGORA 📲</a>
+        
+        <p style="font-size: 0.9rem; margin-top: 20px; color: #777;">Disponível para Android • Versão 1.0</p>
+    </div>
+
+    <div class="features">
+        <div class="card battle">
+            <h3>⚔️ Battle Royale</h3>
+            <p>Uma arena brutal onde a zona diminui constantemente. Coloque até 100 nomes e veja quem é o último sobrevivente. Física realista e caos garantido.</p>
+        </div>
+        
+        <div class="card futebol">
+            <h3>⚽ Futebol Caótico</h3>
+            <p>O clássico Verde vs Vermelho. A bola é gigante, a física é imprevisível e o gol é uma festa. Quem marcar 3 gols primeiro vence a partida!</p>
+        </div>
+    </div>
+
+    <div class="ad-space">Publicidade</div>
+
+    <div class="tutorial">
+        <h3>🚀 Como Monetizar suas Lives com o App?</h3>
+        <ul>
+            <li><strong>1. Baixe o App:</strong> Instale no seu celular Android.</li>
+            <li><strong>2. Comece a Live:</strong> Abra o TikTok, YouTube ou Twitch e transmita a tela.</li>
+            <li><strong>3. Engaje:</strong> Diga "Quem mandar presente agora entra na próxima rodada!".</li>
+            <li><strong>4. Narre:</strong> Use sua criatividade para narrar as batalhas épicas.</li>
+        </ul>
+    </div>
+
+    <footer>
+        <p>Desenvolvido por DS Drones Dev</p>
+        <p>&copy; 2026 Músicas Esquecidas da Internet Productions</p>
+    </footer>
+
+</body>
+</html>
