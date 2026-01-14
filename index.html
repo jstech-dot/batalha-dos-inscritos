@@ -12,6 +12,7 @@
             background-color: #121212;
             color: #ffffff;
             text-align: center;
+            overflow-x: hidden; /* Evita rolagem lateral na página toda */
         }
 
         /* CABEÇALHO */
@@ -30,10 +31,24 @@
             text-shadow: 0 0 10px rgba(255,255,255,0.2);
         }
 
+        @media (max-width: 600px) {
+            h1 { font-size: 2rem; }
+        }
+
         h2 {
             color: #FF5252;
             font-weight: 300;
             margin-top: 10px;
+        }
+
+        /* ÁREA DO ANÚNCIO (RESPONSIVA) */
+        .ad-container {
+            margin: 30px auto;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            overflow-x: auto; /* Permite rolar o anúncio se a tela for pequena */
+            padding-bottom: 10px; /* Espaço para a barra de rolagem */
         }
 
         /* ÁREA DE DOWNLOAD */
@@ -128,21 +143,6 @@
             background-color: #000;
             border-top: 1px solid #222;
         }
-
-        /* ESPAÇO PARA ANÚNCIO (DISCRETO) */
-        .ad-space {
-            width: 100%;
-            max-width: 728px;
-            height: 90px;
-            background-color: #1a1a1a;
-            margin: 30px auto;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #444;
-            border: 1px dashed #333;
-            font-size: 0.8rem;
-        }
     </style>
 </head>
 <body>
@@ -152,7 +152,9 @@
         <h2>A Ferramenta Definitiva para Streamers</h2>
     </header>
 
-    <div class="ad-space">Publicidade</div>
+    <div class="ad-container">
+        <iframe data-aa='2424170' src='//ad.a-ads.com/2424170/?size=728x90' style='border:0; padding:0; width:728px; height:90px; overflow:hidden;'></iframe>
+    </div>
 
     <div class="hero">
         <p>Crie o caos na sua live! Coloque o nome dos seus seguidores e deixe a física decidir o vencedor.</p>
@@ -174,7 +176,9 @@
         </div>
     </div>
 
-    <div class="ad-space">Publicidade</div>
+    <div class="ad-container">
+        <iframe data-aa='2424170' src='//ad.a-ads.com/2424170/?size=728x90' style='border:0; padding:0; width:728px; height:90px; overflow:hidden;'></iframe>
+    </div>
 
     <div class="tutorial">
         <h3>🚀 Como Monetizar suas Lives com o App?</h3>
@@ -187,7 +191,7 @@
     </div>
 
     <footer>
-        <p>Desenvolvido por DS Drones Dev</p>
+        <p>Desenvolvido por JSTech</p>
         <p>&copy; 2026 Músicas Esquecidas da Internet Productions</p>
     </footer>
 
