@@ -1,260 +1,421 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-PR0DEMC7Y2"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PR0DEMC7Y2"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-
       gtag('config', 'G-PR0DEMC7Y2');
     </script>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Batalha dos Inscritos - Jogo Oficial</title>
-    <meta name="description" content="O simulador de física mais caótico para suas Lives! Baixe Batalha dos Inscritos.">
+    <title>Batalha dos Inscritos - JSTech</title>
+    <meta name="description" content="O simulador de física mais caótico para suas Lives! Jogue agora e use o JSTech Studio para suas capas.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet">
+
     <style>
-        /* --- ESTILO GERAL (DARK MODE) --- */
+        /* --- VARIAVEIS E GERAL --- */
+        :root {
+            --neon-green: #00ff88;
+            --neon-blue: #00ccff;
+            --neon-purple: #bc13fe;
+            --neon-pink: #ff0055;
+            --dark-bg: #050505;
+            --card-bg: rgba(20, 20, 20, 0.95);
+            --glass: rgba(255, 255, 255, 0.05);
+        }
+
         body {
             margin: 0;
             padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #0a0a0a;
+            font-family: 'Rajdhani', sans-serif;
+            background-color: var(--dark-bg);
+            background-image: radial-gradient(circle at 50% 0%, #1a1a2e 0%, #000 80%);
             color: #ffffff;
             text-align: center;
             overflow-x: hidden;
         }
 
-        /* --- CABEÇALHO COM O BANNER --- */
+        /* --- CABEÇALHO --- */
         header {
-            /* Aqui carregamos a sua imagem 'banner.png' */
-            /* O gradiente escuro ajuda a ler o texto se a imagem for muito clara no centro */
-            background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.8)), url('banner.png');
-            
-            background-size: cover;       /* Faz a imagem cobrir toda a área */
-            background-position: center;  /* Centraliza a arte VS */
-            background-repeat: no-repeat;
-            
-            padding: 120px 20px;          /* Altura do banner */
-            border-bottom: 4px solid #D32F2F;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+            background: linear-gradient(to bottom, rgba(0,0,0,0.4), var(--dark-bg)), url('banner.png');
+            background-size: cover;
+            background-position: center;
+            padding: 100px 20px 60px 20px;
+            border-bottom: 2px solid var(--neon-purple);
+            box-shadow: 0 0 50px rgba(188, 19, 254, 0.2);
         }
 
         h1 {
-            font-size: 3.5rem;
+            font-size: 4rem;
             margin: 0;
             color: #fff;
             text-transform: uppercase;
-            letter-spacing: 3px;
-            /* Sombra forte para garantir leitura em cima da arte */
-            text-shadow: 4px 4px 0px #000, 0 0 20px rgba(255, 0, 0, 0.8); 
+            letter-spacing: 2px;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.4), 4px 4px 0px #000;
+            font-weight: 700;
         }
 
         h2 {
-            color: #FFEB3B;
-            font-weight: 400;
-            font-size: 1.5rem;
-            margin-top: 15px;
-            text-shadow: 2px 2px 4px #000;
+            color: var(--neon-green);
+            font-weight: 600;
+            font-size: 1.8rem;
+            margin-top: 10px;
+            text-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
         }
 
-        /* Responsividade para celular */
-        @media (max-width: 600px) {
-            header { padding: 60px 20px; }
-            h1 { font-size: 2.2rem; }
-            h2 { font-size: 1.1rem; }
-        }
-
-        /* --- ÁREA DE ANÚNCIOS --- */
+        /* --- ANÚNCIOS --- */
         .ad-container {
-            margin: 30px auto;
+            margin: 40px auto;
             width: 100%;
             max-width: 728px;
             display: flex;
             justify-content: center;
-            background-color: #111;
-            padding: 10px 0;
+            background-color: rgba(255,255,255,0.02);
+            padding: 10px;
             border-radius: 8px;
-            overflow: hidden; /* Evita quebrar layout no mobile */
+            border: 1px dashed #333;
         }
 
-        /* --- BOTÃO DE DOWNLOAD --- */
+        /* --- HERO SECTION & BOTÕES --- */
         .hero-section {
-            padding: 40px 20px;
-            background: radial-gradient(circle at center, #1a1a1a 0%, #000000 100%);
+            padding: 20px 20px 40px 20px;
         }
 
-        .download-btn {
-            background: linear-gradient(90deg, #00C853, #64DD17); /* Verde chamativo */
-            color: #000;
-            padding: 25px 60px;
-            font-size: 1.8rem;
+        .hero-text {
+            font-size: 1.3rem;
+            color: #ccc;
+            margin-bottom: 40px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .action-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .btn {
+            padding: 20px 40px;
+            font-size: 1.5rem;
             text-decoration: none;
-            border-radius: 50px;
-            font-weight: 900;
-            box-shadow: 0 0 30px rgba(0, 200, 83, 0.4);
-            display: inline-block;
-            transition: transform 0.2s, box-shadow 0.2s;
+            border-radius: 8px;
+            font-weight: 700;
             text-transform: uppercase;
-            border: 3px solid #fff;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 260px;
         }
 
-        .download-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 50px rgba(0, 200, 83, 0.7);
-            background: linear-gradient(90deg, #64DD17, #00C853);
+        /* Botão APK (Bloqueado/Em Breve) */
+        .btn-apk-soon {
+            background: #333;
+            color: #888;
+            cursor: not-allowed;
+            border: 1px solid #555;
+        }
+        .btn-apk-soon::after {
+            content: "🔒";
+            margin-left: 10px;
         }
 
-        .version-text {
-            margin-top: 15px;
-            color: #666;
+        /* Botão WEB (Ativo) */
+        .btn-web {
+            background: linear-gradient(45deg, #FF512F, #DD2476);
+            color: #fff;
+            box-shadow: 0 0 20px rgba(221, 36, 118, 0.4);
+            animation: pulseWeb 2s infinite;
+        }
+        .btn-web:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 40px rgba(221, 36, 118, 0.8);
+        }
+
+        @keyframes pulseWeb {
+            0% { box-shadow: 0 0 20px rgba(221, 36, 118, 0.4); }
+            50% { box-shadow: 0 0 40px rgba(221, 36, 118, 0.7); }
+            100% { box-shadow: 0 0 20px rgba(221, 36, 118, 0.4); }
+        }
+
+        .tag-info {
+            display: block;
+            margin-top: 10px;
             font-size: 0.9rem;
+            color: #888;
         }
 
-        /* --- CARDS DE FUNCIONALIDADES --- */
+        /* --- CARDS DE FUNCIONALIDADES DO JOGO --- */
         .features {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
             gap: 30px;
-            padding: 50px 20px;
-            background-color: #0d0d0d;
+            padding: 20px;
+            margin-bottom: 60px;
         }
 
         .card {
-            background: #181818;
+            background: var(--card-bg);
             padding: 30px;
-            border-radius: 20px;
+            border-radius: 15px;
             width: 300px;
             border: 1px solid #333;
             text-align: left;
-            transition: transform 0.3s;
-        }
-
-        .card:hover {
-            transform: translateY(-10px);
-            border-color: #D32F2F;
-        }
-
-        .card h3 {
-            font-size: 1.5rem;
-            margin-top: 0;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .card.battle h3 { color: #FF5252; }
-        .card.fut h3 { color: #69F0AE; }
-
-        .card p {
-            color: #aaa;
-            line-height: 1.5;
-        }
-
-        /* --- TUTORIAL --- */
-        .tutorial {
-            max-width: 700px;
-            margin: 50px auto;
-            background-color: #151515;
-            padding: 40px;
-            border-radius: 15px;
-            border-left: 5px solid #D32F2F;
-            text-align: left;
+            transition: all 0.3s;
+            position: relative;
         }
         
-        .tutorial h3 { color: #fff; margin-top: 0; }
-        .tutorial li { margin-bottom: 15px; color: #ccc; }
+        .card.battle { border-top: 4px solid #FF5252; }
+        .card.fut { border-top: 4px solid #69F0AE; }
 
-        /* --- RODAPÉ --- */
-        footer {
-            padding: 40px;
-            background-color: #000;
-            color: #555;
-            font-size: 0.8rem;
-            border-top: 1px solid #222;
+        .card:hover {
+            transform: translateY(-5px);
+            background: #222;
         }
 
-        footer strong { color: #fff; }
-		
-		
-		/* --- SEÇÃO DO CYBERBOT (ROBÔ) --- */
+        .card h3 { font-size: 1.8rem; margin-top: 5px; color: #fff; }
+        .card p { color: #aaa; line-height: 1.6; }
+
+        /* --- CYBERBOT (DESTAQUE) --- */
         .cyber-section {
-            margin: 60px auto;
-            max-width: 800px;
-            padding: 2px; /* Espaço para a borda gradiente */
-            background: linear-gradient(90deg, #00d2ff, #3a7bd5, #00d2ff); /* Borda Neon */
-            background-size: 200% 200%;
-            animation: borderAnimate 3s ease infinite;
+            margin: 40px auto 80px auto; 
+            max-width: 900px;
+            position: relative;
+            background: linear-gradient(90deg, #111, #1a1a1a);
             border-radius: 20px;
-            box-shadow: 0 0 20px rgba(0, 210, 255, 0.4);
+            padding: 2px;
+            box-shadow: 0 0 25px rgba(0, 204, 255, 0.15);
+            animation: borderPulse 4s infinite alternate;
         }
 
+        @keyframes borderPulse {
+            0% { box-shadow: 0 0 15px rgba(0, 204, 255, 0.1); }
+            100% { box-shadow: 0 0 30px rgba(0, 204, 255, 0.3); border-color: var(--neon-blue); }
+        }
+        
         .cyber-content {
-            background-color: #050505; /* Fundo quase preto */
+            background-color: #0a0a0a;
             border-radius: 18px;
-            padding: 40px;
+            padding: 30px 40px;
             display: flex;
-            flex-wrap: wrap;
             align-items: center;
-            justify-content: space-around;
+            justify-content: space-between;
             gap: 20px;
         }
 
-        @keyframes borderAnimate {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
         .cyber-text h3 {
-            color: #00E5FF; /* Azul Ciano Neon */
-            font-size: 1.8rem;
-            margin-bottom: 10px;
+            color: var(--neon-blue);
+            font-size: 2rem;
+            margin: 0 0 5px 0;
             text-transform: uppercase;
-            text-shadow: 0 0 10px rgba(0, 229, 255, 0.7);
         }
-
-        .cyber-text p {
-            color: #ccc;
-            font-size: 1rem;
-            max-width: 400px;
-        }
-
+        
         .cyber-btn {
             background: transparent;
-            border: 2px solid #00E5FF;
-            color: #00E5FF;
-            padding: 15px 30px;
-            font-size: 1.2rem;
+            border: 2px solid var(--neon-blue);
+            color: var(--neon-blue);
+            padding: 12px 30px;
+            font-size: 1.1rem;
             font-weight: bold;
             text-decoration: none;
             border-radius: 8px;
-            transition: all 0.3s;
-            box-shadow: 0 0 15px rgba(0, 229, 255, 0.2);
+            transition: 0.3s;
+            white-space: nowrap;
+        }
+        .cyber-btn:hover { 
+            background: var(--neon-blue); 
+            color: #000; 
+            box-shadow: 0 0 20px var(--neon-blue);
+        }
+
+        /* --- ÁREA: FERRAMENTAS PARA CRIADORES --- */
+        .tools-header {
+            margin-top: 20px;
+            margin-bottom: 20px;
+            font-size: 2.2rem;
+            color: #fff;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            position: relative;
             display: inline-block;
         }
-
-        .cyber-btn:hover {
-            background: #00E5FF;
-            color: #000;
-            box-shadow: 0 0 40px rgba(0, 229, 255, 0.8);
-            transform: scale(1.05);
+        .tools-header span { color: var(--neon-purple); }
+        
+        .tools-header::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: var(--neon-purple);
+            margin: 10px auto 0 auto;
         }
 
-        /* Ícone do Robô (Simulado com CSS ou Imagem) */
-        .robot-icon {
-            font-size: 4rem;
-            animation: floatRobot 3s ease-in-out infinite;
+        .tools-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            max-width: 1000px;
+            margin: 0 auto 60px auto;
+            padding: 0 20px;
         }
 
-        @keyframes floatRobot {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
+        .tool-card {
+            flex: 1;
+            min-width: 300px;
+            background: linear-gradient(145deg, rgba(30,30,30,0.9), rgba(10,10,10,0.95));
+            border-radius: 20px;
+            padding: 30px;
+            text-align: left;
+            border: 1px solid #333;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .tool-card h3 { margin-top: 0; font-size: 1.8rem; display: flex; align-items: center; gap: 10px; }
+        .tool-card p { color: #ccc; font-size: 1.1rem; margin-bottom: 25px; }
+
+        .tool-card.extractor { border-left: 5px solid var(--neon-blue); }
+        .tool-card.extractor h3 { color: var(--neon-blue); }
+        .tool-card.extractor:hover { box-shadow: 0 0 30px rgba(0, 204, 255, 0.2); transform: translateY(-5px); }
+        
+        .tool-card.studio { border-left: 5px solid var(--neon-pink); }
+        .tool-card.studio h3 { color: var(--neon-pink); }
+        .tool-card.studio:hover { box-shadow: 0 0 30px rgba(255, 0, 85, 0.2); transform: translateY(-5px); }
+
+        .btn-tool-link {
+            display: inline-block;
+            padding: 12px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 1rem;
+            transition: 0.3s;
+        }
+
+        .btn-tool-link.blue { border: 2px solid var(--neon-blue); color: var(--neon-blue); }
+        .btn-tool-link.blue:hover { background: var(--neon-blue); color: #000; }
+
+        .btn-tool-link.pink { border: 2px solid var(--neon-pink); color: var(--neon-pink); }
+        .btn-tool-link.pink:hover { background: var(--neon-pink); color: #fff; }
+
+        /* --- TUTORIAL --- */
+        .tutorial-hub {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            color: #fff;
+            margin-bottom: 40px;
+            text-transform: uppercase;
+        }
+        .section-title span { color: var(--neon-green); }
+
+        .tutorial-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            text-align: left;
+        }
+
+        .tutorial-col h4 {
+            font-size: 1.5rem;
+            color: var(--neon-purple);
+            border-bottom: 1px solid #444;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        .step-item {
+            background: var(--glass);
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 10px;
+            border-left: 3px solid #555;
+        }
+        .step-item strong { color: #fff; display: block; margin-bottom: 5px; font-size: 1.1rem; }
+        .step-item p { color: #bbb; margin: 0; font-size: 0.95rem; }
+
+        /* --- COMENTÁRIOS --- */
+        .comments-section {
+            max-width: 800px;
+            margin: 80px auto;
+            padding: 40px;
+            background: #101010;
+            border-radius: 20px;
+            box-shadow: 0 0 30px rgba(0,0,0,0.5);
+            border: 1px solid #333;
+        }
+        
+        .comments-section h3 {
+            color: #fff;
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            text-align: left;
+        }
+
+        .comment-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .input-group input, .input-group textarea {
+            width: 100%;
+            padding: 15px;
+            background: #1a1a1a;
+            border: 1px solid #333;
+            border-radius: 8px;
+            color: #fff;
+            font-family: inherit;
+            box-sizing: border-box; 
+        }
+        
+        .input-group textarea { resize: vertical; min-height: 100px; }
+
+        .btn-submit {
+            background: var(--neon-purple);
+            color: #fff;
+            border: none;
+            padding: 15px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            text-transform: uppercase;
+            transition: 0.3s;
+        }
+        .btn-submit:hover { background: #9d00db; }
+
+        footer {
+            padding: 50px;
+            background-color: #000;
+            color: #555;
+            font-size: 0.9rem;
+            border-top: 1px solid #222;
+        }
+        footer strong { color: var(--neon-purple); }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            .tools-container { flex-direction: column; }
+            .tutorial-grid { grid-template-columns: 1fr; }
+            .cyber-content { flex-direction: column; text-align: center; }
         }
     </style>
 </head>
@@ -272,14 +433,26 @@
     </div>
 
     <section class="hero-section">
-        <p style="font-size: 1.2rem; color: #eee; margin-bottom: 30px;">
+        <p class="hero-text">
             Engaje seu público com batalhas épicas e futebol imprevisível. <br>
-            A física decide o vencedor!
+            A física decide o vencedor! Escolha sua plataforma:
         </p>
 
-        <a href="#" class="download-btn">BAIXAR APK AGORA 🔥</a>
-        
-        <p class="version-text">Versão 1.0 para Android • Grátis</p>
+        <div class="action-buttons">
+            <div style="display:flex; flex-direction:column; align-items:center;">
+                <a href="#" class="btn btn-apk-soon" onclick="alert('O APK Oficial está sendo polido na fábrica da JSTech! Aguarde novidades.'); return false;">
+                    BAIXAR APK (EM BREVE)
+                </a>
+                <span class="tag-info">Disponível em breve para Android</span>
+            </div>
+
+            <div style="display:flex; flex-direction:column; align-items:center;">
+                <a href="https://batalha-dos-inscritos.netlify.app/" target="_blank" class="btn btn-web">
+                    JOGAR NA WEB 🌐
+                </a>
+                <span class="tag-info">Acesso Imediato (PC/Mobile)</span>
+            </div>
+        </div>
     </section>
 
     <div class="features">
@@ -293,36 +466,100 @@
         </div>
     </div>
 
+    <div class="cyber-section">
+        <div class="cyber-content">
+            <div class="robot-icon" style="font-size: 3.5rem;">🤖</div>
+            <div class="cyber-text" style="text-align: left; flex: 1;">
+                <h3>Cansou da Bagunça?</h3>
+                <p style="color:#ccc; margin:0;">Tente vencer nossa IA no <strong>CyberBot 734</strong>. Um desafio futurista de inteligência.</p>
+            </div>
+            <a href="https://cyberbot734-game.netlify.app/" target="_blank" class="cyber-btn">
+                DESAFIAR IA AGORA ⚡
+            </a>
+        </div>
+    </div>
+
+    <h3 class="tools-header">Ferramentas Oficiais <span>JSTech</span></h3>
+    
+    <div class="tools-container">
+        
+        <div class="tool-card extractor">
+            <h3>🚀 Extrator de Seguidores</h3>
+            <p>Precisa dos nomes de quem mandou presente? Nossa extensão pega a lista automaticamente para você.</p>
+            <a href="https://extrator-seguidores.netlify.app/" target="_blank" class="btn-tool-link blue">
+                Baixar Extensão
+            </a>
+        </div>
+
+        <div class="tool-card studio">
+            <h3>🎨 JSTech Studio</h3>
+            <p>Crie capas (thumbnails) profissionais para seus vídeos e lives. Editor online gratuito e fácil de usar.</p>
+            <a href="https://jstechstudio.netlify.app/" target="_blank" class="btn-tool-link pink">
+                Acessar Editor
+            </a>
+        </div>
+
+    </div>
+
     <div class="ad-container">
         <iframe data-aa='2424170' src='//ad.a-ads.com/2424170/?size=728x90' 
                 style='border:0; padding:0; width:728px; height:90px; overflow:hidden; display:block; margin:auto'>
         </iframe>
     </div>
 
-    <div class="tutorial">
-        <h3>🚀 Como Monetizar:</h3>
-        <ul>
-            <li><strong>1. Instale:</strong> Baixe o APK e instale no seu Android.</li>
-            <li><strong>2. Transmita:</strong> Abra live no TikTok ou YouTube.</li>
-            <li><strong>3. Interaja:</strong> "Quem mandar presente entra na próxima batalha!".</li>
-            <li><strong>4. Divirta-se:</strong> Narre os acontecimentos e veja o chat engajar.</li>
-        </ul>
-    </div>
-	
-	<div class="cyber-section">
-        <div class="cyber-content">
-            <div class="robot-icon">
-                🤖
+    <section class="tutorial-hub">
+        <h3 class="section-title">Central de Ajuda <span>JSTech</span></h3>
+        
+        <div class="tutorial-grid">
+            <div class="tutorial-col">
+                <h4>1. Como usar o Extrator</h4>
+                <div class="step-item">
+                    <strong>Passo A: Instalação</strong>
+                    <p>Baixe a extensão pelo link acima e instale no navegador.</p>
+                </div>
+                <div class="step-item">
+                    <strong>Passo B: Na Live</strong>
+                    <p>Abra sua live. Abra a extensão e clique em "Capturar".</p>
+                </div>
+                <div class="step-item">
+                    <strong>Passo C: Copiar</strong>
+                    <p>Clique em "Copiar Lista" e leve para o jogo.</p>
+                </div>
             </div>
-            <div class="cyber-text" style="text-align: left;">
-                <h3>Cansou da bagunça?</h3>
-                <p>Conheça o <strong>CyberBot 734</strong>. Teste sua inteligência contra nossa IA em um ambiente futurista.</p>
+
+            <div class="tutorial-col">
+                <h4>2. Configurando a Batalha</h4>
+                <div class="step-item">
+                    <strong>Passo A: Importar Nomes</strong>
+                    <p>No jogo, abra o menu lateral e cole a lista de nomes copiada.</p>
+                </div>
+                <div class="step-item">
+                    <strong>Passo B: Capa do Vídeo</strong>
+                    <p>Use o <strong>JSTech Studio</strong> para criar uma thumbnail chamativa antes de postar.</p>
+                </div>
+                <div class="step-item">
+                    <strong>Passo C: Jogar</strong>
+                    <p>Dê play e narre a partida para seus seguidores!</p>
+                </div>
             </div>
-            <a href="https://cyberbot734-game.netlify.app/" target="_blank" class="cyber-btn">
-                Acessar Robô ⚡
-            </a>
         </div>
-    </div>
+    </section>
+
+    <section class="comments-section">
+        <h3>💬 Fale com a JSTech</h3>
+        <form class="comment-form" action="https://formsubmit.co/jstechgames11@gmail.com" method="POST">
+            <input type="hidden" name="_next" value="https://batalha-dos-inscritos.netlify.app/">
+            <input type="hidden" name="_captcha" value="false">
+
+            <div class="input-group">
+                <input type="text" name="name" placeholder="Seu Nome (ou Canal)" required>
+            </div>
+            <div class="input-group">
+                <textarea name="message" placeholder="Deixe seu feedback, sugestão ou dúvida..." required></textarea>
+            </div>
+            <button type="submit" class="btn-submit">Enviar Feedback</button>
+        </form>
+    </section>
 
     <footer>
         <p>Desenvolvido por <strong>JSTech</strong></p>
