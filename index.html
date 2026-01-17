@@ -401,6 +401,12 @@
             transition: 0.3s;
         }
         .btn-submit:hover { background: #9d00db; }
+        
+        /* Botão desabilitado durante o envio */
+        .btn-submit:disabled {
+            background: #444;
+            cursor: wait;
+        }
 
         footer {
             padding: 50px;
@@ -547,19 +553,55 @@
 
     <section class="comments-section">
         <h3>💬 Fale com a JSTech</h3>
-        <form class="comment-form" action="https://formsubmit.co/jstechgames11@gmail.com" method="POST">
-            <input type="hidden" name="_next" value="https://batalha-dos-inscritos.netlify.app/">
-            <input type="hidden" name="_captcha" value="false">
-
+        <form class="comment-form" onsubmit="enviarFeedback(event)">
             <div class="input-group">
                 <input type="text" name="name" placeholder="Seu Nome (ou Canal)" required>
             </div>
             <div class="input-group">
                 <textarea name="message" placeholder="Deixe seu feedback, sugestão ou dúvida..." required></textarea>
             </div>
+            <input type="hidden" name="_captcha" value="false">
+            
             <button type="submit" class="btn-submit">Enviar Feedback</button>
         </form>
     </section>
+
+    <script>
+        function enviarFeedback(e) {
+            e.preventDefault(); // Impede que a página recarregue/redirecione
+
+            const form = e.target;
+            const btn = form.querySelector('.btn-submit');
+            const originalText = btn.innerText;
+
+            // Muda o botão para indicar carregamento
+            btn.innerText = "Enviando...";
+            btn.disabled = true;
+
+            const formData = new FormData(form);
+
+            // IMPORTANTE: Substitua 'SEU_EMAIL_AQUI' pelo seu email real
+            // A URL "/ajax/" é o segredo para receber a resposta sem redirecionar
+            fetch("https://formsubmit.co/ajax/jstechgames11@gmail.com", {
+                method: "POST",
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert("✅ Mensagem enviada com sucesso! A JSTech agradece seu contato.");
+                form.reset(); // Limpa os campos
+            })
+            .catch(error => {
+                console.error('Erro:', error);
+                alert("❌ Erro ao enviar. Verifique sua conexão ou tente mais tarde.");
+            })
+            .finally(() => {
+                // Restaura o botão
+                btn.innerText = originalText;
+                btn.disabled = false;
+            });
+        }
+    </script>
 
     <footer>
         <p>Desenvolvido por <strong>JSTech</strong></p>
